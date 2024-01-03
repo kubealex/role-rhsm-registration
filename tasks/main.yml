@@ -1,0 +1,37 @@
+---
+# roles/role_rhsm_registration/tasks/main.yml
+
+- name: Manage Red Hat Subscriptions
+  community.general.redhat_subscription:
+    activationkey: "{{ role_rhsm_registration_activationkey | default(omit, true) }}"
+    auto_attach: "{{ role_rhsm_registration_auto_attach }}"
+    consumer_id: "{{ role_rhsm_registration_consumer_id | default(omit, true) }}"
+    consumer_name: "{{ role_rhsm_registration_consumer_name }}"
+    consumer_type: "{{ role_rhsm_registration_consumer_type }}"
+    environment: "{{ role_rhsm_registration_environment | default(omit, true) }}"
+    force_register: "{{ role_rhsm_registration_force_register }}"
+    org_id: "{{ role_rhsm_registration_org_id }}"
+    password: "{{ role_rhsm_registration_password | default(omit, true) }}"
+    pool_ids: "{{ role_rhsm_registration_pool_ids }}"
+    release: "{{ role_rhsm_registration_release }}"
+    rhsm_baseurl: "{{ role_rhsm_registration_rhsm_baseurl }}"
+    rhsm_repo_ca_cert: "{{ role_rhsm_registration_rhsm_repo_ca_cert }}"
+    server_hostname: "{{ role_rhsm_registration_server_hostname }}"
+    server_insecure: "{{ role_rhsm_registration_server_insecure }}"
+    server_port: "{{ role_rhsm_registration_server_port }}"
+    server_prefix: "{{ role_rhsm_registration_server_prefix }}"
+    server_proxy_hostname: "{{ role_rhsm_registration_server_proxy_hostname }}"
+    server_proxy_password: "{{ role_rhsm_registration_server_proxy_password }}"
+    server_proxy_port: "{{ role_rhsm_registration_server_proxy_port }}"
+    server_proxy_scheme: "{{ role_rhsm_registration_server_proxy_scheme }}"
+    server_proxy_user: "{{ role_rhsm_registration_server_proxy_user }}"
+    state: "{{ role_rhsm_registration_state }}"
+    syspurpose: "{{ role_rhsm_registration_syspurpose }}"
+    token: "{{ role_rhsm_registration_token | default(omit, true) }}"
+    username: "{{ role_rhsm_registration_username }}"
+  register: registration_status
+  become: true
+
+- name: Print registration status
+  ansible.builtin.debug:
+    var: registration_status
