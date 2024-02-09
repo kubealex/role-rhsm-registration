@@ -4,7 +4,7 @@
 - name: Manage Red Hat Subscriptions
   community.general.redhat_subscription:
     activationkey: "{{ role_rhsm_registration_activationkey | default(omit, true) }}"
-    auto_attach: "{{ role_rhsm_registration_auto_attach }}"
+    auto_attach: "{{ role_rhsm_registration_auto_attach | default(omit, true) }}"
     consumer_id: "{{ role_rhsm_registration_consumer_id | default(omit, true) }}"
     consumer_name: "{{ role_rhsm_registration_consumer_name }}"
     consumer_type: "{{ role_rhsm_registration_consumer_type }}"
@@ -28,7 +28,7 @@
     state: "{{ role_rhsm_registration_state }}"
     syspurpose: "{{ role_rhsm_registration_syspurpose }}"
     token: "{{ role_rhsm_registration_token | default(omit, true) }}"
-    username: "{{ role_rhsm_registration_username }}"
+    username: "{{ role_rhsm_registration_username | default(omit, true) }}"
   register: registration_status
   become: true
 
