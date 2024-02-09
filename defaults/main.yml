@@ -1,6 +1,6 @@
 # roles/role_rhsm_registration/defaults/main.yml
 role_rhsm_registration_activationkey: null
-role_rhsm_registration_auto_attach: true
+role_rhsm_registration_auto_attach: null
 role_rhsm_registration_consumer_id: null
 role_rhsm_registration_consumer_name: null
 role_rhsm_registration_consumer_type: null
